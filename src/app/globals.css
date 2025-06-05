@@ -21,8 +21,6 @@ body {
 }
 
 .admin-padding {
-  padding-left: 5vw;
-  padding-right: 5vw;
-  padding-top: 1.5vw;
-  padding-bottom: 1.5vw;
+  padding: var(--mantine-spacing-md);
+  background: #eceff2;
 }

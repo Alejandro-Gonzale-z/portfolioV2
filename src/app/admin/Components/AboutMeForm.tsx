@@ -24,17 +24,17 @@ export default function AboutMeForm() {
   }, [state.message, state.success]);
 
   return (
-    <div className="space-y-8 border-4 rounded-xl admin-padding">
-      <Title order={1}>About Me Form</Title>
+    <div className="space-y-8 admin-padding">
+      <Title order={1} style={{ color: "blue" }}>
+        About Me Form
+      </Title>
       <form action={formAction}>
         <Textarea
-          label="About Me"
           name="description"
           placeholder="Enter your about me info"
           description=""
           autosize
           minRows={4}
-          required
         />
         <Button variant="outline" type="submit" className="mt-8" size="lg">
           Upload

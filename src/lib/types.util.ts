@@ -3,3 +3,8 @@ export type FormState = {
   message: string;
 };
 
+export enum AdminNavLinks {
+  AboutMe,
+  Links,
+  Null,
+}
