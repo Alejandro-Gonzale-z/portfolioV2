@@ -4,7 +4,6 @@ export type FormState = {
 };
 
 export enum AdminNavLinks {
-  AboutMe,
-  Links,
-  Null,
+  AboutMe = "About Me",
+  Links = "Links",
 }
