@@ -1,4 +1,4 @@
-import mongoose, { Schema } from "mongoose";
+import { Schema, model, models } from "mongoose";
 
 const AboutMeSchema = new Schema(
   {
@@ -11,5 +11,4 @@ const AboutMeSchema = new Schema(
   }
 );
 
-export const AboutMe =
-  mongoose.models.AboutMe || mongoose.model("AboutMe", AboutMeSchema);
+export const AboutMe = models.AboutMe || model("AboutMe", AboutMeSchema);

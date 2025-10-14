@@ -3,31 +3,16 @@
 
 import { connectToDB } from "@/lib/mongoose";
 import { AboutMe } from "@/models/AboutMe";
-// import { revalidatePath } from "next/cache"; // optional if you want to refresh RSC views
+import { toBool } from "@/lib/actionHelpers.util"
+import { FormState } from "@/lib/types.util";
 
-export type AboutMeFormState = {
-  success: boolean;
-  message: string;
-  timestamp: number;
-};
-
-function now(): number {
-  return Date.now();
-}
-
-function toBool(v: FormDataEntryValue | null): boolean | undefined {
-  if (v == null) return undefined;
-  const s = v.toString().trim().toLowerCase();
-  if (["true", "on", "1", "yes"].includes(s)) return true;
-  if (["false", "off", "0", "no"].includes(s)) return false;
-  return undefined;
-}
+const now = () => Date.now();
 
 /** Create a new AboutMe and make it the only selected document */
 export async function createAboutMe(
-  _prevState: AboutMeFormState,
+  _prevState: FormState,
   formData: FormData
-): Promise<AboutMeFormState> {
+): Promise<FormState> {
   const description = (formData.get("description") ?? "").toString().trim();
 
   if (!description) {
@@ -58,9 +43,9 @@ export async function createAboutMe(
 
 /** Update description and/or selected for an existing AboutMe */
 export async function updateAboutMe(
-  _prev: AboutMeFormState,
+  _prev: FormState,
   formData: FormData
-): Promise<AboutMeFormState> {
+): Promise<FormState> {
   const id = formData.get("id")?.toString().trim() ?? "";
 
   if (!id) {

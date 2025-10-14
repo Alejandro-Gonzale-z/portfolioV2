@@ -1,23 +1,19 @@
 import mongoose from "mongoose";
 
-const MONGODB_URI = process.env.MONGODB_URI || "";
-
-if (!MONGODB_URI) {
-  throw new Error("MONGODB_URI environment variable not found");
+declare global {
+  // eslint-disable-next-line no-var
+  var __mongooseCache:
+    | { conn: typeof mongoose | null; promise: Promise<typeof mongoose> | null }
+    | undefined;
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const cached = (global as any).mongoose || { connection: null, promise: null };
+const uri = process.env.MONGODB_URI!;
+const cache = global.__mongooseCache ?? { conn: null, promise: null };
+if (!global.__mongooseCache) global.__mongooseCache = cache;
 
 export async function connectToDB() {
-  if (cached.connection) return cached.connection;
-
-  if (!cached.promise) {
-    cached.promise = mongoose.connect(MONGODB_URI, {
-      bufferCommands: false,
-    });
-  }
-
-  cached.connection = await cached.promise;
-  return cached.connection;
+  if (cache.conn) return cache.conn;
+  if (!cache.promise) cache.promise = mongoose.connect(uri, { bufferCommands: false });
+  cache.conn = await cache.promise;
+  return cache.conn;
 }

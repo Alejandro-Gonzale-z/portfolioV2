@@ -17,6 +17,7 @@
     "@mantine/hooks": "^8.0.2",
     "@mantine/notifications": "^8.0.2",
     "@tabler/icons-react": "^3.33.0",
+    "framer-motion": "^12.23.24",
     "mongoose": "^8.15.1",
     "next": "^15.3.2",
     "react": "^19.0.0",

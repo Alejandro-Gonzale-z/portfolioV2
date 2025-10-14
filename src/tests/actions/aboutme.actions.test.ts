@@ -25,10 +25,11 @@ vi.mock("@/models/AboutMe", () => ({
 import {
   createAboutMe,
   updateAboutMe,
-  type AboutMeFormState,
 } from "@/actions/AboutMe";
 
-const prev: AboutMeFormState = { success: false, message: "", timestamp: 0 };
+import { FormState } from "@/lib/types.util";
+
+const prev: FormState = { success: false, message: "", timestamp: 0 };
 
 beforeEach(() => {
   vi.clearAllMocks();

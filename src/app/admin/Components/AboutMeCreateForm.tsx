@@ -1,13 +1,13 @@
 "use client";
 import { createAboutMe } from "@/actions/AboutMe";
-import { Button, Title, Textarea } from "@mantine/core";
+import { Button, Textarea } from "@mantine/core";
 import { IconCheck, IconX } from "@tabler/icons-react";
 import { notifications } from "@mantine/notifications";
 import { useActionState, useEffect } from "react";
 
 const initialState = { success: false, message: "", timestamp: 0 };
 
-export default function AboutMeForm() {
+export default function AboutMeCreateForm() {
   const [state, formAction, isPending] = useActionState(
     createAboutMe,
     initialState
@@ -29,20 +29,17 @@ export default function AboutMeForm() {
 
   return (
     <div className="space-y-6">
-      <Title order={2} style={{ color: "blue" }}>
-        About Me Form
-      </Title>
-
-      <form action={formAction} className="max-w-3xl space-y-6">
+      <form action={formAction} className="space-y-6">
         <Textarea
           name="description"
           placeholder="Enter your about me info"
           autosize
           minRows={4}
+          className="w-full"
         />
         <div className="mt-6 flex justify-end">
           <Button variant="outline" type="submit" size="md">
-            {isPending ? "Saving..." : "Upload"}
+            {isPending ? "Saving..." : "Save"}
           </Button>
         </div>
       </form>

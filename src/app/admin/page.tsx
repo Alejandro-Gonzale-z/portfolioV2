@@ -5,7 +5,8 @@ import { Title, PasswordInput, Button } from "@mantine/core";
 import { validateLogin } from "@/actions/ValidateLogin";
 import { notifications } from "@mantine/notifications";
 import { IconCheck, IconX } from "@tabler/icons-react";
-const initialState = { success: false, message: "" };
+
+const initialState = { success: false, message: "", timestamp: 0 };
 
 export default function AdminLogin() {
   const router = useRouter();
@@ -58,22 +59,28 @@ export default function AdminLogin() {
   }, [state.message, state.success]);
 
   return (
-    <div className="flex flex-col items-center w-full py-36">
-      <div className="min-w-[50%] space-y-8">
-        <Title>Admin Login</Title>
-        <div className="bg-gray-200 min-w-[50%] rounded-md p-8">
-          <form action={formAction}>
+    <div className="flex w-full justify-center px-4 py-16 sm:py-36">
+      <div className="w-full max-w-sm sm:max-w-md space-y-8">
+        <Title className="text-center sm:text-left">Admin Login</Title>
+
+        <div className="rounded-2xl bg-white shadow-xl border border-gray-200/70 p-6 sm:p-8">
+          <form action={formAction} className="space-y-4">
             <PasswordInput
               placeholder="Password"
               id="your-password"
               name="password"
-              size="xl"
+              size="lg"
+              className="w-full"
+              aria-label="Password"
+              autoComplete="current-password"
+              radius="md"
             />
             <Button
               variant="filled"
               type="submit"
-              className="mt-8 items-end"
               size="lg"
+              fullWidth
+              className="mt-2"
             >
               Login
             </Button>
