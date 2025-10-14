@@ -104,7 +104,7 @@ function MiniLinkForm({ type }: { type: LinkType }) {
         </label>
       </div>
 
-      <div className="flex items-center justify-between pt-1">
+      <div className="flex justify-end align-right pt-1">
         <SubmitButton isPending={isPending}label="Save" />
       </div>
     </form>
@@ -115,7 +115,7 @@ export default function LinksForm() {
   return (
     <div className="rounded-2xl border border-gray-200/80 bg-white shadow-xl p-6 md:p-8">
       <Title order={2} style={{ color: "blue" }}>
-        Link Forms
+        Links
       </Title>
       <div className="grid grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-8 mt-4">
         {TYPES.map((t) => (

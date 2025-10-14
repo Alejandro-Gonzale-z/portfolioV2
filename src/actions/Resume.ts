@@ -69,8 +69,6 @@ export async function createResume(
       file: buf,
       sha256,
       selected,
-      tags: [],
-      notes: "",
     });
 
     // Optionally: revalidatePath("/admin"); if your UI reads via RSC

@@ -39,8 +39,6 @@ const ResumeSchema = new Schema(
       type: Boolean,
       default: false,                                             
     },
-    tags: { type: [String], default: [] },                        
-    notes: { type: String, default: "" },
   },
   {
     collection: "Resumes",

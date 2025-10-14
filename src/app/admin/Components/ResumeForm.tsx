@@ -8,6 +8,7 @@ import { IconCheck, IconX } from "@tabler/icons-react";
 import { SubmitButton } from "./submitBtn";
 import { Switch, Title } from "@mantine/core";
 import { AnimatePresence, motion } from "framer-motion";
+import { PdfFileField } from "./PdfFileField";
 
 const initialState: FormState = {
   success: false,
@@ -57,7 +58,7 @@ export default function ResumeForm() {
             className="space-y-6"
           >
             <div className="space-y-2">
-              <label className="block text-sm font-medium">Resume Title</label>
+              <label className="block text-sm font-medium text-gray-700">Resume Title</label>
               <input
                 name="title"
                 type="text"
@@ -68,25 +69,8 @@ export default function ResumeForm() {
             </div>
 
             <div className="space-y-2">
-              <label className="block text-sm font-medium">PDF File</label>
-              <input
-                name="file"
-                type="file"
-                accept="application/pdf"
-                required
-                className="
-    block w-full text-sm text-gray-900
-    file:mr-3 file:py-2 file:px-4
-    file:rounded-lg file:border-0
-    file:font-medium
-    file:bg-blue-50 file:text-blue-700
-    hover:file:bg-blue-100
-    file:cursor-pointer
-  "
-              />
-              <p className="text-xs text-gray-500">
-                PDF only • up to 16&nbsp;MB
-              </p>
+              <label className="block text-sm font-medium text-gray-700">PDF File</label>
+              <PdfFileField />
             </div>
 
             <div className="pt-1">
@@ -95,7 +79,7 @@ export default function ResumeForm() {
               <Switch name="selected" color="blue" label="Mark as selected" />
             </div>
 
-            <div>
+            <div className="flex justify-end">
               <SubmitButton isPending={isPending} label="Save" />
             </div>
           </motion.form>
