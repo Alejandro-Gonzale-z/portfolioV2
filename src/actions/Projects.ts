@@ -71,7 +71,7 @@ export async function createProject(
       .getAll("images")
       .filter((f): f is File => f instanceof File);
 
-    const images: { fileId: any; alt: string; order: number }[] = [];
+    const images: { fileID: any; alt: string; order: number }[] = [];
 
     for (let i = 0; i < files.length; i++) {
       const f = files[i];
@@ -84,7 +84,7 @@ export async function createProject(
 
       await pipeline(Readable.from(buf), uploadStream);
 
-      images.push({ fileId: uploadStream.id, alt: "", order: i });
+      images.push({ fileID: uploadStream.id, alt: "", order: i });
     }
 
     await Project.create({

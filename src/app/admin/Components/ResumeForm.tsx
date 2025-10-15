@@ -46,7 +46,7 @@ export default function ResumeForm() {
       </div>
 
       {/* Animated content area */}
-      <div className="pt-6 relative overflow-hidden">
+      <div className="pt-6 relative">
         <AnimatePresence mode="wait">
           <motion.form
             key="resume-create"
@@ -63,7 +63,7 @@ export default function ResumeForm() {
                 name="title"
                 type="text"
                 required
-                className="border rounded-md px-3 py-2 w-full"
+                className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-blue-400"
                 placeholder="Software Engineer Resume"
               />
             </div>
